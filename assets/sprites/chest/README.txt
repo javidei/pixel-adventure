@@ -1,0 +1,1 @@
+Estados PNG del cofre. Ver docs/ASSET_PIPELINE.md
