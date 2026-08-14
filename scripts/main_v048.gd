@@ -2,7 +2,7 @@ extends "res://scripts/main_v046.gd"
 
 # 0.4.8: primera separación real de arte y lógica.
 # El escenario usa capas PNG independientes; NPC y cofre usan sprites externos.
-# El retrato de conversación usa la imagen aprobada adjunta por el usuario.
+# El retrato de conversación conserva la imagen transparente aprobada.
 
 const BG_FAR: Texture2D = preload("res://assets/backgrounds/demo_room/trees_far.png")
 const BG_MID: Texture2D = preload("res://assets/backgrounds/demo_room/trees_mid.png")
@@ -17,8 +17,6 @@ const NPC_TALK_1: Texture2D = preload("res://assets/sprites/cartographer/world/t
 const CHEST_CLOSED: Texture2D = preload("res://assets/sprites/chest/chest_closed.png")
 const CHEST_OPENING: Texture2D = preload("res://assets/sprites/chest/chest_opening.png")
 const CHEST_OPEN: Texture2D = preload("res://assets/sprites/chest/chest_open.png")
-
-const CARTOGRAPHER_DIALOGUE_PORTRAIT: Texture2D = preload("res://assets/characters/cartographer_portrait_v048.png")
 
 func _draw_intro() -> void:
 	draw_rect(Rect2(0, 0, VIEW_WIDTH, VIEW_HEIGHT), Color.BLACK)
@@ -73,9 +71,9 @@ func _draw_chest() -> void:
 		draw_rect(Rect2(chest_x + 20, 83, 8, 1), Color("e95355"))
 
 func _draw_cartographer_portrait() -> void:
-	# Imagen aprobada por el usuario, con fondo transparente.
+	# Conserva el retrato transparente aprobado que ya usa 0.4.6.
 	draw_texture_rect(
-		CARTOGRAPHER_DIALOGUE_PORTRAIT,
+		CARTOGRAPHER_PORTRAIT,
 		Rect2(4, 2, 76, 114),
 		false
 	)
