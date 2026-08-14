@@ -1,34 +1,38 @@
 # Pixel Adventure
 
-Base de una aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje de diseño de las aventuras de finales de los 80 y principios de los 90, sin reutilizar personajes, fondos, música ni recursos de juegos comerciales.
+Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90, sin reutilizar personajes, fondos, música ni recursos de juegos comerciales.
 
-## Estado actual · 0.1.0
+## Estado actual · 0.2.0
 
 El prototipo ya incluye:
 
 - resolución interna **320×180** y escalado nítido;
+- fuente **Commodore Pixelized v1.2** cargada desde `assets/fonts/` para toda la interfaz y los textos del juego;
+- pantalla inicial negra con **“Bienvenido a Naranjal del Río”**;
 - interfaz clásica de **9 verbos**;
-- hotspots clicables en la habitación;
-- inventario básico;
-- interacción `verbo + objeto`;
-- pequeño puzle de ejemplo: mover un cuadro, encontrar una llave, abrir un cofre y entregar un fragmento;
-- escena dibujada de forma procedural para poder probar el motor sin depender todavía de arte definitivo;
-- datos básicos de la habitación separados en JSON;
+- escenario horizontal más ancho que la cámara;
+- movimiento lateral del personaje con seguimiento de cámara;
+- **parallax multicapa**: estrellas, montañas, colinas/pueblo lejano y primer plano se desplazan a velocidades distintas;
+- hotspots clicables en coordenadas de mundo;
+- inventario básico e interacción `verbo + objeto`;
+- acercamiento automático del personaje al objeto antes de ejecutar la acción;
+- animación visible al abrir el cofre;
+- pequeño puzle de ejemplo: mover un mapa, encontrar una llave, abrir el cofre, recoger un fragmento y entregarlo al cartógrafo;
+- escena dibujada proceduralmente en pixel art para probar cámara, capas e interacción sin depender todavía del arte definitivo;
+- datos básicos del escenario separados en JSON;
 - exportación Web automática mediante GitHub Actions.
 
-La demo Web se publica en:
+Demo:
 
 `https://javidei.github.io/pixel-adventure/`
 
-## Fuente Commodore 64 Pixelized
+## Fuente
 
-El proyecto está preparado para utilizar **Commodore 64 Pixelized**. Si existe este archivo:
+El proyecto usa directamente:
 
 `assets/fonts/Commodore Pixelized v1.2.ttf`
 
-Godot lo utiliza automáticamente en la interfaz del prototipo. Mientras el TTF no esté dentro del proyecto, se utiliza la fuente de respaldo de Godot para que la build Web siga siendo autocontenida y estable.
-
-El archivo de la fuente de terceros no se incluye en este repositorio. Consulta `assets/fonts/README.md` para añadir tu copia.
+Todos los textos actuales pasan por las funciones de dibujo del juego y utilizan esa misma fuente. Además, la escena raíz hereda un `Theme` global con esa fuente para los controles que se añadan después.
 
 ## Estructura
 
@@ -36,6 +40,7 @@ El archivo de la fuente de terceros no se incluye en este repositorio. Consulta 
 pixel-adventure/
 ├── .github/workflows/deploy-web.yml
 ├── assets/fonts/
+├── assets/theme/
 ├── data/rooms/
 ├── docs/
 ├── scenes/
@@ -46,6 +51,6 @@ pixel-adventure/
 
 ## Filosofía
 
-La intención es que el motor sea **data-driven**: habitaciones, hotspots, diálogos, inventario y puzles deberán poder ampliarse progresivamente mediante datos sin llenar el código principal de casos específicos.
+La intención es mantener el motor **data-driven**: habitaciones, hotspots, diálogos, inventario y puzles deberán poder ampliarse progresivamente mediante datos sin llenar el código principal de casos específicos.
 
 La siguiente fase está descrita en `docs/ROADMAP.md`.
