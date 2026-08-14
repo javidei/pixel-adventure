@@ -1,13 +1,10 @@
-# Fuente del prototipo
+# Fuentes del prototipo
 
-El juego está preparado para utilizar **Commodore 64 Pixelized**.
+El juego usa dos tipografías distintas:
 
-Coloca tu copia con este nombre exacto:
+- `Windows Regular.ttf`: interfaz, verbos, inventario, mensajes, títulos y pantalla de inicio.
+- `ONESR___.TTF`: diálogos entre personajes.
 
-```text
-assets/fonts/Commodore Pixelized v1.2.ttf
-```
+Los dos archivos están versionados en `assets/fonts/` y se cargan directamente desde Godot, por lo que la exportación Web no depende de fuentes instaladas en el sistema del jugador.
 
-Si el archivo no está presente, el prototipo utiliza la fuente de respaldo incluida por Godot. De esta forma la exportación Web no depende de fuentes instaladas en el sistema del servidor o del jugador.
-
-El archivo TTF de terceros no se versiona aquí para mantener separado el código del proyecto de los recursos cuya licencia/redistribución deba conservarse junto a su paquete original.
+`Commodore Pixelized v1.2.ttf` se conserva en la carpeta como recurso previo del prototipo, pero ya no es la fuente principal de la interfaz desde la versión 0.2.1.
