@@ -2,12 +2,13 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90, sin reutilizar personajes, fondos, música ni recursos de juegos comerciales.
 
-## Estado actual · 0.2.0
+## Estado actual · 0.2.1
 
 El prototipo ya incluye:
 
 - resolución interna **320×180** y escalado nítido;
-- fuente **Commodore Pixelized v1.2** cargada desde `assets/fonts/` para toda la interfaz y los textos del juego;
+- **Windows Regular** para interfaz, verbos, inventario, mensajes, títulos y pantalla inicial;
+- **ONESR___** para los diálogos de personajes;
 - pantalla inicial negra con **“Bienvenido a Naranjal del Río”**;
 - interfaz clásica de **9 verbos**;
 - escenario horizontal más ancho que la cámara;
@@ -17,6 +18,7 @@ El prototipo ya incluye:
 - inventario básico e interacción `verbo + objeto`;
 - acercamiento automático del personaje al objeto antes de ejecutar la acción;
 - animación visible al abrir el cofre;
+- conversación visible entre el protagonista y el cartógrafo al usar **HABLAR**, avanzable con clic, toque, espacio o Enter;
 - pequeño puzle de ejemplo: mover un mapa, encontrar una llave, abrir el cofre, recoger un fragmento y entregarlo al cartógrafo;
 - escena dibujada proceduralmente en pixel art para probar cámara, capas e interacción sin depender todavía del arte definitivo;
 - datos básicos del escenario separados en JSON;
@@ -26,13 +28,16 @@ Demo:
 
 `https://javidei.github.io/pixel-adventure/`
 
-## Fuente
+## Fuentes
 
-El proyecto usa directamente:
+El proyecto carga directamente:
 
-`assets/fonts/Commodore Pixelized v1.2.ttf`
+```text
+assets/fonts/Windows Regular.ttf
+assets/fonts/ONESR___.TTF
+```
 
-Todos los textos actuales pasan por las funciones de dibujo del juego y utilizan esa misma fuente. Además, la escena raíz hereda un `Theme` global con esa fuente para los controles que se añadan después.
+La fuente global de Godot es **Windows Regular**. Los diálogos se dibujan específicamente con **ONESR___** para mantener una apariencia diferenciada del resto de la interfaz.
 
 ## Estructura
 
