@@ -1,0 +1,42 @@
+{
+  "id": "cartographers_room",
+  "title": "EL CUARTO DEL CARTOGRAFO",
+  "hotspots": [
+    {
+      "id": "painting",
+      "name": "CUADRO TORCIDO",
+      "rect": [68, 28, 40, 35],
+      "look": "UN VIEJO RETRATO. ESTA DEMASIADO TORCIDO PARA SER CASUALIDAD."
+    },
+    {
+      "id": "key",
+      "name": "LLAVE",
+      "rect": [86, 66, 8, 8],
+      "look": "UNA PEQUENA LLAVE DE COBRE."
+    },
+    {
+      "id": "npc",
+      "name": "CARTOGRAFO",
+      "rect": [136, 54, 26, 54],
+      "look": "UN CARTOGRAFO QUE PARECE LLEVAR TRES NOCHES SIN DORMIR."
+    },
+    {
+      "id": "chest",
+      "name": "COFRE",
+      "rect": [232, 84, 48, 26],
+      "look": "UN COFRE PEQUENO CON UNA CERRADURA MUY GRANDE."
+    },
+    {
+      "id": "map_piece",
+      "name": "FRAGMENTO",
+      "rect": [248, 78, 14, 8],
+      "look": "UN TROZO DE MAPA CON UNA MARCA ROJA."
+    },
+    {
+      "id": "door",
+      "name": "PUERTA",
+      "rect": [282, 24, 30, 86],
+      "look": "LA PUERTA DE SALIDA. POR AHORA NO TIENES PRISA."
+    }
+  ]
+}
