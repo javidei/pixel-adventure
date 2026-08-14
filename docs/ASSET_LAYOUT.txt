@@ -1,0 +1,3 @@
+backgrounds/demo_room: capas
+sprites/cartographer/world: frames del NPC
+sprites/chest: estados del cofre
