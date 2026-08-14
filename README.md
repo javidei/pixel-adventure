@@ -2,7 +2,7 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.3
+## Estado actual · 0.4.4
 
 El prototipo incluye:
 
@@ -19,9 +19,9 @@ El prototipo incluye:
 - animación visible del cofre;
 - exportación Web automática mediante GitHub Actions.
 
-### Corrección 0.4.3 · diálogos
+### Corrección 0.4.4 · ONESR
 
-Se elimina el nombre redundante del Cartógrafo en la conversación, se retiran los textos temporales de prueba de fuentes y se ajusta el renderizado de ONESR para que el texto no salga del área visible. El diálogo usa ahora contorno negro real en ocho direcciones y ajuste automático por palabras.
+El contorno de ONESR se genera ahora con `draw_string_outline()` y después se pinta el glifo en morado. Esto evita que las copias desplazadas usadas anteriormente invadan el interior de las letras y produzcan el efecto visual invertido. Se mantiene el ajuste automático de líneas y el nombre del NPC continúa oculto durante la conversación.
 
 Demo:
 
