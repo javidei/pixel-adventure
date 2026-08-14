@@ -1,42 +1,42 @@
 {
-  "id": "cartographers_room",
-  "title": "EL CUARTO DEL CARTOGRAFO",
+  "id": "cartographers_overlook",
+  "title": "MIRADOR DEL CARTOGRAFO",
   "hotspots": [
     {
       "id": "painting",
-      "name": "CUADRO TORCIDO",
-      "rect": [68, 28, 40, 35],
-      "look": "UN VIEJO RETRATO. ESTA DEMASIADO TORCIDO PARA SER CASUALIDAD."
+      "name": "MAPA TORCIDO",
+      "rect": [210, 28, 40, 35],
+      "look": "UN MAPA VIEJO DE NARANJAL. ESTA DEMASIADO TORCIDO PARA SER CASUALIDAD."
     },
     {
       "id": "key",
       "name": "LLAVE",
-      "rect": [86, 66, 8, 8],
-      "look": "UNA PEQUENA LLAVE DE COBRE."
+      "rect": [228, 63, 11, 10],
+      "look": "UNA PEQUENA LLAVE DE COBRE ESCONDIDA TRAS EL MAPA."
     },
     {
       "id": "npc",
       "name": "CARTOGRAFO",
-      "rect": [136, 54, 26, 54],
-      "look": "UN CARTOGRAFO QUE PARECE LLEVAR TRES NOCHES SIN DORMIR."
+      "rect": [350, 55, 30, 54],
+      "look": "UN CARTOGRAFO QUE VIGILA LAS LUCES DE NARANJAL DESDE LAS RUINAS."
     },
     {
       "id": "chest",
       "name": "COFRE",
-      "rect": [232, 84, 48, 26],
-      "look": "UN COFRE PEQUENO CON UNA CERRADURA MUY GRANDE."
+      "rect": [498, 79, 52, 32],
+      "look": "UN COFRE DE MADERA CON UNA CERRADURA DE COBRE."
     },
     {
       "id": "map_piece",
       "name": "FRAGMENTO",
-      "rect": [248, 78, 14, 8],
+      "rect": [514, 79, 18, 13],
       "look": "UN TROZO DE MAPA CON UNA MARCA ROJA."
     },
     {
       "id": "door",
-      "name": "PUERTA",
-      "rect": [282, 24, 30, 86],
-      "look": "LA PUERTA DE SALIDA. POR AHORA NO TIENES PRISA."
+      "name": "ARCO DE PIEDRA",
+      "rect": [608, 20, 62, 92],
+      "look": "UN ARCO EN RUINAS. AL OTRO LADO CONTINUA EL SENDERO."
     }
   ]
 }
