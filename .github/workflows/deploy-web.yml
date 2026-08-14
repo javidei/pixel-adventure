@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -26,6 +26,52 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Reparar fuente ONESR
+        shell: bash
+        run: |
+          set -e
+          FONT="assets/fonts/ONESR___.TTF"
+          CURRENT_SIZE=$(wc -c < "$FONT" 2>/dev/null || echo 0)
+          echo "ONESR actual: ${CURRENT_SIZE} bytes"
+
+          # El TTF original de Onesize Reverse ronda los 9.7 KB. La copia
+          # anterior del repo quedó truncada a ~6.5 KB y su tabla 'glyf'
+          # apuntaba fuera del final del archivo, por eso Godot no dibujaba texto.
+          if [ "$CURRENT_SIZE" -lt 9000 ]; then
+            TMP_FONT="/tmp/ONESR___.TTF"
+            if ! curl -fL --retry 3 --connect-timeout 20 \
+              "https://fontsforyou.com/fonts/o/Onesr.ttf" \
+              -o "$TMP_FONT"; then
+              echo "Fallo la descarga principal; probando DaFont..."
+              curl -fL --retry 3 --connect-timeout 20 \
+                "https://dl.dafont.com/dl/?f=onesize" \
+                -o /tmp/onesize.zip
+              unzip -jo /tmp/onesize.zip 'ONESR___.TTF' -d /tmp
+              mv /tmp/ONESR___.TTF "$TMP_FONT"
+            fi
+
+            NEW_SIZE=$(wc -c < "$TMP_FONT")
+            echo "ONESR descargada: ${NEW_SIZE} bytes"
+            if [ "$NEW_SIZE" -lt 9000 ]; then
+              echo "La fuente descargada sigue incompleta."
+              exit 1
+            fi
+            mv "$TMP_FONT" "$FONT"
+
+            # Corrige también el binario del repositorio una sola vez.
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$FONT"
+            if ! git diff --cached --quiet; then
+              git commit -m "fix: restaurar ONESR TTF completo [skip ci]"
+              git push origin HEAD:main
+            fi
+          fi
+
+          FINAL_SIZE=$(wc -c < "$FONT")
+          test "$FINAL_SIZE" -ge 9000
+          echo "ONESR validada: ${FINAL_SIZE} bytes"
 
       - name: Preparar plantillas de exportación
         run: |
