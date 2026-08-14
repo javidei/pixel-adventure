@@ -2,7 +2,7 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.7
+## Estado actual · 0.4.8
 
 El prototipo incluye:
 
@@ -14,48 +14,46 @@ El prototipo incluye:
 - dos modos de conversación: diálogo corto sobre el escenario y conversación importante con retrato + respuestas seleccionables;
 - diálogos NPC con **relleno morado, contorno negro de 2 px, tamaño reducido y salto de línea automático**;
 - respuestas del protagonista en **verde y texto normal**, sin mayúsculas forzadas;
-- retrato del **Cartógrafo con fondo transparente**, reutilizado también para que el NPC del escenario mantenga la misma apariencia;
-- nuevo bosque nocturno con **tres capas de árboles y parallax**, manteniendo el cielo estrellado;
-- suelo rehecho con tierra, hierba, piedras y pequeñas irregularidades;
-- cofre redibujado con tablones, herrajes, cierre y tapa animada más detallada;
-- interfaz inferior clásica con fondo negro, verbos verdes, inventario morado y flecha azul solo cuando hace falta paginar;
-- escenario horizontal con cámara y **parallax multicapa**;
+- retrato transparente aprobado del **Cartógrafo** reservado para la conversación importante;
+- Cartógrafo del escenario recuperado al aspecto sencillo anterior, ahora preparado como frames PNG independientes;
+- bosque dividido en **tres PNG de parallax independientes**;
+- suelo convertido en una capa PNG independiente;
+- cofre convertido en sprites separados para cerrado, apertura y abierto;
+- interfaz inferior clásica con fondo negro, verbos verdes e inventario morado;
 - inventario, hotspots, interacción `verbo + objeto` y puzle de ejemplo;
 - exportación Web automática mediante GitHub Actions.
 
-### Cambio 0.4.7 · Bosque, Cartógrafo y cofre
+### Cambio 0.4.8 · assets desacoplados
 
-El horizonte deja de usar montañas triangulares y bloques rectangulares. Ahora se dibujan varias capas de árboles con distintas velocidades de parallax: los más lejanos aparecen como sombras y los cercanos tienen una silueta más marcada. El camino se ha rehecho para parecer terreno natural. El Cartógrafo utiliza un PNG transparente y su versión estática del escenario comparte el mismo aspecto. El cofre conserva su lógica interactiva y su animación, pero tiene más volumen y detalle visual.
+La parte visual empieza a separarse de la lógica. Los fondos, el NPC del mundo y el cofre tienen una estructura de assets reemplazables sin reescribir el código. Los tamaños y convenciones están documentados en `docs/ASSET_PIPELINE.md`.
 
 Demo:
 
 `https://javidei.github.io/pixel-adventure/`
 
-## Fuentes
+## Estructura de arte
 
 ```text
-assets/fonts/Commodore Pixelized v1.2.ttf
-assets/fonts/Windows Regular.ttf
-assets/fonts/ONESIZE_.TTF
-assets/fonts/ONESR___.TTF
+assets/backgrounds/demo_room/
+  trees_far.png      680x116
+  trees_mid.png      680x116
+  trees_near.png     680x116
+  ground.png         680x28
+
+assets/sprites/cartographer/world/
+  idle_0.png         24x48
+  idle_1.png         24x48
+  talk_0.png         24x48
+  talk_1.png         24x48
+
+assets/sprites/chest/
+  chest_closed.png   56x32
+  chest_opening.png  56x32
+  chest_open.png     56x32
 ```
 
-## Estructura
-
-```text
-pixel-adventure/
-├── .github/workflows/deploy-web.yml
-├── assets/characters/
-├── assets/fonts/
-├── assets/theme/
-├── data/rooms/
-├── docs/
-├── scenes/
-├── scripts/
-├── export_presets.cfg
-└── project.godot
-```
+El retrato de conversación sigue en `assets/characters/cartographer_portrait.png`.
 
 ## Filosofía
 
-La intención es mantener el motor **data-driven**: habitaciones, hotspots, diálogos, inventario y puzles deberán poder ampliarse mediante datos sin llenar el código principal de casos específicos.
+La intención es mantener el motor **data-driven** y que el arte sea también reemplazable: habitación, capas de fondo, sprites, diálogos, inventario y puzles deben poder evolucionar sin llenar el código principal de casos específicos.
