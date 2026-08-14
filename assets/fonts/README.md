@@ -1,10 +1,8 @@
 # Fuentes del prototipo
 
-El juego usa dos tipografías distintas:
+El juego usa dos tipografías proporcionadas para este proyecto:
 
-- `Windows Regular.ttf`: interfaz, verbos, inventario, mensajes, títulos y pantalla de inicio.
+- `Windows Regular.ttf`: interfaz, verbos, inventario, títulos y textos generales.
 - `ONESR___.TTF`: diálogos entre personajes.
 
-Los dos archivos están versionados en `assets/fonts/` y se cargan directamente desde Godot, por lo que la exportación Web no depende de fuentes instaladas en el sistema del jugador.
-
-`Commodore Pixelized v1.2.ttf` se conserva en la carpeta como recurso previo del prototipo, pero ya no es la fuente principal de la interfaz desde la versión 0.2.1.
+Los archivos incluidos en el repositorio están optimizados conservando los glifos necesarios para el juego, de forma que la exportación Web sea más ligera y fiable.
