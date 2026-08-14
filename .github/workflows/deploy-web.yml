@@ -79,41 +79,28 @@ jobs:
           test -s web/index.pck
           touch web/.nojekyll
 
-      - name: Versionar recursos Web para evitar caché antigua
+      - name: Evitar caché antigua
         run: |
-          VERSION=$(python - <<'PY'
-          import re
-          from pathlib import Path
-          text = Path('project.godot').read_text(encoding='utf-8')
-          match = re.search(r'config/version="([^"]+)"', text)
-          print(match.group(1) if match else 'dev')
-          PY
-          )
-          BASE="index-${VERSION}"
+          BASE="index-${GITHUB_SHA}"
 
           mv web/index.wasm "web/${BASE}.wasm"
           mv web/index.pck "web/${BASE}.pck"
-          mv web/index.audio.worklet.js "web/${BASE}.audio.worklet.js"
-          mv web/index.audio.position.worklet.js "web/${BASE}.audio.position.worklet.js"
 
-          VERSION="$VERSION" BASE="$BASE" python - <<'PY'
-          import os
-          from pathlib import Path
+          if [ -f web/index.audio.worklet.js ]; then
+            mv web/index.audio.worklet.js "web/${BASE}.audio.worklet.js"
+          fi
+          if [ -f web/index.audio.position.worklet.js ]; then
+            mv web/index.audio.position.worklet.js "web/${BASE}.audio.position.worklet.js"
+          fi
+          if [ -f web/index.worker.js ]; then
+            mv web/index.worker.js "web/${BASE}.worker.js"
+          fi
 
-          version = os.environ['VERSION']
-          base = os.environ['BASE']
-          path = Path('web/index.html')
-          html = path.read_text(encoding='utf-8')
-
-          html = html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n\t\t<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">\n\t\t<meta http-equiv="Pragma" content="no-cache">\n\t\t<meta http-equiv="Expires" content="0">')
-          html = html.replace('src="index.png"', f'src="index.png?v={version}"')
-          html = html.replace('src="index.js"', f'src="index.js?v={version}"')
-          html = html.replace('"executable":"index"', f'"executable":"{base}"')
-          html = html.replace('"index.pck":', f'"{base}.pck":')
-          html = html.replace('"index.wasm":', f'"{base}.wasm":')
-
-          path.write_text(html, encoding='utf-8')
-          PY
+          sed -i "s/\"executable\":\"index\"/\"executable\":\"${BASE}\"/g" web/index.html
+          sed -i "s/\"index.pck\":/\"${BASE}.pck\":/g" web/index.html
+          sed -i "s/\"index.wasm\":/\"${BASE}.wasm\":/g" web/index.html
+          sed -i "s/src=\"index.js\"/src=\"index.js?v=${GITHUB_SHA}\"/g" web/index.html
+          sed -i "s/src=\"index.png\"/src=\"index.png?v=${GITHUB_SHA}\"/g" web/index.html
 
           test -s "web/${BASE}.wasm"
           test -s "web/${BASE}.pck"
