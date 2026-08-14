@@ -2,7 +2,7 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.6
+## Estado actual · 0.4.7
 
 El prototipo incluye:
 
@@ -14,16 +14,18 @@ El prototipo incluye:
 - dos modos de conversación: diálogo corto sobre el escenario y conversación importante con retrato + respuestas seleccionables;
 - diálogos NPC con **relleno morado, contorno negro de 2 px, tamaño reducido y salto de línea automático**;
 - respuestas del protagonista en **verde y texto normal**, sin mayúsculas forzadas;
-- retrato pixel del **Cartógrafo** integrado como imagen real en la conversación importante;
+- retrato del **Cartógrafo con fondo transparente**, reutilizado también para que el NPC del escenario mantenga la misma apariencia;
+- nuevo bosque nocturno con **tres capas de árboles y parallax**, manteniendo el cielo estrellado;
+- suelo rehecho con tierra, hierba, piedras y pequeñas irregularidades;
+- cofre redibujado con tablones, herrajes, cierre y tapa animada más detallada;
 - interfaz inferior clásica con fondo negro, verbos verdes, inventario morado y flecha azul solo cuando hace falta paginar;
 - escenario horizontal con cámara y **parallax multicapa**;
 - inventario, hotspots, interacción `verbo + objeto` y puzle de ejemplo;
-- animación visible del cofre;
 - exportación Web automática mediante GitHub Actions.
 
-### Cambio 0.4.6 · Conversación del Cartógrafo
+### Cambio 0.4.7 · Bosque, Cartógrafo y cofre
 
-La conversación importante usa el retrato aprobado del Cartógrafo en `assets/characters/cartographer_portrait.png`. Los textos del NPC dejan de mostrarse en mayúsculas forzadas y mantienen Onesize normal con relleno morado y contorno negro más marcado. Las respuestas del protagonista usan Windows Regular en verde y también se muestran como texto normal.
+El horizonte deja de usar montañas triangulares y bloques rectangulares. Ahora se dibujan varias capas de árboles con distintas velocidades de parallax: los más lejanos aparecen como sombras y los cercanos tienen una silueta más marcada. El camino se ha rehecho para parecer terreno natural. El Cartógrafo utiliza un PNG transparente y su versión estática del escenario comparte el mismo aspecto. El cofre conserva su lógica interactiva y su animación, pero tiene más volumen y detalle visual.
 
 Demo:
 
