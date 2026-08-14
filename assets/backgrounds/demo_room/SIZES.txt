@@ -1,0 +1,4 @@
+trees_far.png 680x116
+trees_mid.png 680x116
+trees_near.png 680x116
+ground.png 680x28
