@@ -1,0 +1,1 @@
+Próximos assets recomendados: walk_0..n, turn, gesture, blink y más variantes talk para el Cartógrafo. La 0.4.8 deja la estructura preparada.
