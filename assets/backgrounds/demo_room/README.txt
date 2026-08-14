@@ -1,0 +1,1 @@
+Capas de fondo de la habitación demo. Ver docs/ASSET_PIPELINE.md
