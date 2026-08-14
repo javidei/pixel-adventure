@@ -1,0 +1,1 @@
+Los PNG reales se cargan desde main_v048.gd.
