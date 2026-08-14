@@ -8,6 +8,6 @@ Coloca tu copia con este nombre exacto:
 assets/fonts/Commodore Pixelized v1.2.ttf
 ```
 
-Si el archivo no está presente, el juego intenta utilizar una fuente instalada en el sistema con los nombres `Commodore 64 Pixelized` o `Commodore Pixelized` y finalmente una monoespaciada como respaldo.
+Si el archivo no está presente, el prototipo utiliza la fuente de respaldo incluida por Godot. De esta forma la exportación Web no depende de fuentes instaladas en el sistema del servidor o del jugador.
 
 El archivo TTF de terceros no se versiona aquí para mantener separado el código del proyecto de los recursos cuya licencia/redistribución deba conservarse junto a su paquete original.
