@@ -2,12 +2,12 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90, sin reutilizar personajes, fondos, música ni recursos de juegos comerciales.
 
-## Estado actual · 0.4.0
+## Estado actual · 0.4.1
 
 El prototipo ya incluye:
 
 - resolución interna **320×180** y escalado nítido;
-- selector inicial con **10 cursores/crucetas pixel art**;
+- **cruz clásica pixel art** fija como cursor por defecto, sin selector previo;
 - cursor software dibujado dentro del propio juego para mantener el aspecto retro también en Web;
 - **Commodore Pixelized** para pantalla inicial, textos de interfaz, verbos y mensajes;
 - **ONESR___** para el texto hablado por NPC;
