@@ -1,0 +1,1 @@
+Frames PNG del NPC del mundo. Ver docs/ASSET_PIPELINE.md
