@@ -2,14 +2,16 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.8
+## Estado actual · 0.4.9
 
 El prototipo incluye:
 
 - resolución interna **320×180** y escalado nítido;
+- **botón de pantalla completa** mediante icono en la esquina superior derecha, además de F11;
 - **cruz clásica pixel art** fija como cursor por defecto;
 - **Commodore Pixelized** para interfaz, verbos, mensajes y pantalla inicial;
 - **ONESIZE_ / Onesize normal** para los textos hablados por NPC;
+- fallback automático de fuente para **tildes, ñ y otros caracteres españoles**, evitando glifos corruptos;
 - **Windows Regular** para las respuestas del protagonista;
 - dos modos de conversación: diálogo corto sobre el escenario y conversación importante con retrato + respuestas seleccionables;
 - diálogos NPC con **relleno morado, contorno negro de 2 px, tamaño reducido y salto de línea automático**;
@@ -22,6 +24,10 @@ El prototipo incluye:
 - interfaz inferior clásica con fondo negro, verbos verdes e inventario morado;
 - inventario, hotspots, interacción `verbo + objeto` y puzle de ejemplo;
 - exportación Web automática mediante GitHub Actions.
+
+### Cambio 0.4.9 · pantalla completa y textos españoles
+
+Se añade un control de pantalla completa con solo icono en la esquina superior derecha. Los textos de diálogo ahora comprueban cada glifo y usan una fuente de respaldo únicamente cuando la fuente principal no contiene ese carácter, manteniendo el estilo Onesize sin romper las tildes o la `ñ`. También se normaliza la ortografía española del diálogo de la demo.
 
 ### Cambio 0.4.8 · assets desacoplados
 
