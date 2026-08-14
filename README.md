@@ -2,14 +2,14 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.4
+## Estado actual · 0.4.5
 
 El prototipo incluye:
 
 - resolución interna **320×180** y escalado nítido;
 - **cruz clásica pixel art** fija como cursor por defecto;
 - **Commodore Pixelized** para interfaz, verbos, mensajes y pantalla inicial;
-- **ONESR___ / Onesize Reverse** para los textos hablados por NPC;
+- **ONESIZE_ / Onesize normal** para los textos hablados por NPC;
 - **Windows Regular** para las respuestas del protagonista;
 - dos modos de conversación: diálogo corto sobre el escenario y conversación importante con retrato + respuestas seleccionables;
 - diálogos NPC con **relleno morado, contorno negro, tamaño reducido y salto de línea automático**;
@@ -19,9 +19,9 @@ El prototipo incluye:
 - animación visible del cofre;
 - exportación Web automática mediante GitHub Actions.
 
-### Corrección 0.4.4 · ONESR
+### Cambio 0.4.5 · Onesize normal
 
-El contorno de ONESR se genera ahora con `draw_string_outline()` y después se pinta el glifo en morado. Esto evita que las copias desplazadas usadas anteriormente invadan el interior de las letras y produzcan el efecto visual invertido. Se mantiene el ajuste automático de líneas y el nombre del NPC continúa oculto durante la conversación.
+Los diálogos de NPC dejan de usar `ONESR___.TTF` (Onesize Reverse) y pasan a `ONESIZE_.TTF`, la variante normal con el cuerpo del glifo relleno. Godot pinta ese cuerpo en morado y añade un contorno negro de un píxel, manteniendo el ajuste automático de líneas y sin mostrar el nombre redundante del NPC.
 
 Demo:
 
@@ -32,6 +32,7 @@ Demo:
 ```text
 assets/fonts/Commodore Pixelized v1.2.ttf
 assets/fonts/Windows Regular.ttf
+assets/fonts/ONESIZE_.TTF
 assets/fonts/ONESR___.TTF
 ```
 
