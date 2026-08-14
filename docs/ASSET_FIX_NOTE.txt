@@ -1,1 +1,0 @@
-Assets 0.4.8 validados como PNG antes del deploy.
