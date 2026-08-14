@@ -27,6 +27,62 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Preparar fuente ONESIZE normal
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          FONT="assets/fonts/ONESIZE_.TTF"
+          CURRENT_SIZE=$(wc -c < "$FONT" 2>/dev/null || echo 0)
+          echo "ONESIZE actual: ${CURRENT_SIZE} bytes"
+
+          if [ "$CURRENT_SIZE" -lt 5000 ]; then
+            apt-get update -qq
+            apt-get install -y -qq curl unzip ca-certificates >/dev/null
+            mkdir -p assets/fonts
+
+            curl -fL --retry 3 --connect-timeout 20 \
+              "https://dl.dafont.com/dl/?f=onesize" \
+              -o /tmp/onesize.zip
+            unzip -jo /tmp/onesize.zip 'ONESIZE_.TTF' -d assets/fonts
+
+            NEW_SIZE=$(wc -c < "$FONT")
+            echo "ONESIZE descargada: ${NEW_SIZE} bytes"
+            if [ "$NEW_SIZE" -lt 5000 ]; then
+              echo "La fuente ONESIZE descargada parece incompleta."
+              exit 1
+            fi
+
+            # Persistimos el TTF normal en main para que tambien quede disponible
+            # al hacer pull y ejecutar el proyecto localmente.
+            API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/assets/fonts/ONESIZE_.TTF"
+            HTTP_CODE=$(curl -sS -o /tmp/onesize_meta.json -w "%{http_code}" \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "${API_URL}?ref=main")
+
+            FONT_B64=$(base64 -w 0 "$FONT")
+            if [ "$HTTP_CODE" = "200" ]; then
+              REMOTE_SHA=$(sed -n 's/.*"sha"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' /tmp/onesize_meta.json | head -n 1)
+              BODY=$(printf '{"message":"assets: añadir Onesize normal [skip ci]","content":"%s","sha":"%s","branch":"main"}' "$FONT_B64" "$REMOTE_SHA")
+            else
+              BODY=$(printf '{"message":"assets: añadir Onesize normal [skip ci]","content":"%s","branch":"main"}' "$FONT_B64")
+            fi
+
+            curl -fsSL -X PUT \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "Content-Type: application/json" \
+              --data "$BODY" \
+              "$API_URL" >/tmp/onesize_commit.json
+            echo "ONESIZE normal guardada tambien en el repositorio."
+          fi
+
+          FINAL_SIZE=$(wc -c < "$FONT")
+          test "$FINAL_SIZE" -ge 5000
+          echo "ONESIZE validada: ${FINAL_SIZE} bytes"
+
       - name: Reparar fuente ONESR
         shell: bash
         env:
@@ -61,7 +117,6 @@ jobs:
             fi
             mv "$TMP_FONT" "$FONT"
 
-            # Persistimos el TTF binario reparado en main mediante Contents API.
             API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/assets/fonts/ONESR___.TTF"
             META=$(curl -fsSL \
               -H "Authorization: Bearer ${GH_TOKEN}" \
