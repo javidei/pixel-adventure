@@ -1,27 +1,28 @@
 # Pixel Adventure
 
-Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90, sin reutilizar personajes, fondos, música ni recursos de juegos comerciales.
+Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.1
+## Estado actual · 0.4.2
 
-El prototipo ya incluye:
+El prototipo incluye:
 
 - resolución interna **320×180** y escalado nítido;
-- **cruz clásica pixel art** fija como cursor por defecto, sin selector previo;
-- cursor software dibujado dentro del propio juego para mantener el aspecto retro también en Web;
-- **Commodore Pixelized** para pantalla inicial, textos de interfaz, verbos y mensajes;
-- **ONESR___** para el texto hablado por NPC;
-- **Windows Regular** para las respuestas del protagonista en conversaciones importantes;
+- **cruz clásica pixel art** fija como cursor por defecto;
+- **Commodore Pixelized** para interfaz, verbos, mensajes y pantalla inicial;
+- **ONESR___ / Onesize Reverse** para los textos hablados por NPC;
+- **Windows Regular** para las respuestas del protagonista;
 - dos modos de conversación: diálogo corto sobre el escenario y conversación importante con retrato + respuestas seleccionables;
-- interfaz clásica inferior con fondo negro, verbos verdes, inventario morado y flecha azul solo cuando hay más objetos de los visibles;
-- pantalla inicial negra con **“Bienvenido a Naranjal del Río”**;
-- interfaz clásica de **9 verbos**;
-- escenario horizontal con seguimiento de cámara y **parallax multicapa**;
-- hotspots clicables e inventario básico con interacción `verbo + objeto`;
-- animación visible al abrir el cofre;
-- pequeño puzle de ejemplo: mover un mapa, encontrar una llave, abrir el cofre, recoger un fragmento y entregarlo al cartógrafo;
-- datos básicos del escenario separados en JSON;
+- interfaz inferior clásica con fondo negro, verbos verdes, inventario morado y flecha azul solo cuando hace falta paginar;
+- escenario horizontal con cámara y **parallax multicapa**;
+- inventario, hotspots, interacción `verbo + objeto` y puzle de ejemplo;
+- animación visible del cofre;
 - exportación Web automática mediante GitHub Actions.
+
+### Corrección 0.4.2 · ONESR
+
+La copia anterior de `ONESR___.TTF` estaba truncada. El archivo del repositorio tenía **6656 bytes**, aunque las tablas internas del propio TTF apuntaban a datos por encima de los **9000 bytes**. La fuente original ronda los **9.7 KB**.
+
+La CI ahora valida el tamaño del TTF y restaura la copia completa antes de importar/exportar si detecta una versión incompleta. También hay dos pruebas visuales temporales con ONESR: una en la pantalla inicial y otra durante los primeros segundos del escenario.
 
 Demo:
 
@@ -52,6 +53,4 @@ pixel-adventure/
 
 ## Filosofía
 
-La intención es mantener el motor **data-driven**: habitaciones, hotspots, diálogos, inventario y puzles deberán poder ampliarse progresivamente mediante datos sin llenar el código principal de casos específicos.
-
-La siguiente fase está descrita en `docs/ROADMAP.md`.
+La intención es mantener el motor **data-driven**: habitaciones, hotspots, diálogos, inventario y puzles deberán poder ampliarse mediante datos sin llenar el código principal de casos específicos.
