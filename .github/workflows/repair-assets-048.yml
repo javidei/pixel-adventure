@@ -1,0 +1,53 @@
+name: Repair Pixel Adventure 0.4.8 Assets
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repair-assets-048
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Instalar Pillow
+        run: python -m pip install --quiet Pillow
+
+      - name: Generar y validar PNG
+        run: python tools/generate_assets_048.py
+
+      - name: Guardar PNG en main
+        shell: bash
+        run: |
+          set -e
+          PATHS=(
+            assets/backgrounds/demo_room/trees_far.png
+            assets/backgrounds/demo_room/trees_mid.png
+            assets/backgrounds/demo_room/trees_near.png
+            assets/backgrounds/demo_room/ground.png
+            assets/sprites/cartographer/world/idle_0.png
+            assets/sprites/cartographer/world/idle_1.png
+            assets/sprites/cartographer/world/talk_0.png
+            assets/sprites/cartographer/world/talk_1.png
+            assets/sprites/chest/chest_closed.png
+            assets/sprites/chest/chest_opening.png
+            assets/sprites/chest/chest_open.png
+          )
+          if [ -n "$(git status --porcelain -- "${PATHS[@]}")" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "${PATHS[@]}"
+            git commit -m "fix: regenerar PNG válidos de la 0.4.8"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "Los PNG ya son válidos y reproducibles."
+          fi
