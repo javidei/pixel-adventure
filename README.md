@@ -16,17 +16,17 @@ El prototipo ya incluye:
 - datos básicos de la habitación separados en JSON;
 - exportación Web automática mediante GitHub Actions.
 
-Cuando GitHub Pages esté activo, la demo se publica en:
+La demo Web se publica en:
 
 `https://javidei.github.io/pixel-adventure/`
 
 ## Fuente Commodore 64 Pixelized
 
-El proyecto está preparado para utilizar **Commodore 64 Pixelized**. Primero intenta cargar:
+El proyecto está preparado para utilizar **Commodore 64 Pixelized**. Si existe este archivo:
 
 `assets/fonts/Commodore Pixelized v1.2.ttf`
 
-Si el archivo no existe, intenta encontrar la familia instalada en el sistema y, como último respaldo, utiliza una monoespaciada del sistema.
+Godot lo utiliza automáticamente en la interfaz del prototipo. Mientras el TTF no esté dentro del proyecto, se utiliza la fuente de respaldo de Godot para que la build Web siga siendo autocontenida y estable.
 
 El archivo de la fuente de terceros no se incluye en este repositorio. Consulta `assets/fonts/README.md` para añadir tu copia.
 
