@@ -3,6 +3,8 @@ extends SceneTree
 func _initialize() -> void:
 	const PATH := "res://data/rooms/demo_room.json"
 	const ONESR_PATH := "res://assets/fonts/ONESR___.TTF"
+	const ORANGE_TREE_PATH := "res://assets/sprites/props/orange_tree.png"
+	const KEY_SPRITE_PATH := "res://assets/sprites/items/key_ground.png"
 
 	if not FileAccess.file_exists(PATH):
 		_fail("falta demo_room.json")
@@ -10,6 +12,14 @@ func _initialize() -> void:
 
 	if not FileAccess.file_exists(ONESR_PATH):
 		_fail("falta ONESR___.TTF")
+		return
+
+	if not FileAccess.file_exists(ORANGE_TREE_PATH):
+		_fail("falta orange_tree.png")
+		return
+
+	if not FileAccess.file_exists(KEY_SPRITE_PATH):
+		_fail("falta key_ground.png")
 		return
 
 	var font_bytes := FileAccess.get_file_as_bytes(ONESR_PATH)
@@ -28,7 +38,7 @@ func _initialize() -> void:
 		_fail("la habitacion no contiene suficientes hotspots")
 		return
 
-	var required := ["painting", "key", "npc", "chest", "map_piece", "door"]
+	var required := ["key", "npc", "chest", "map_piece", "door"]
 	var ids: Array[String] = []
 	for raw_entry in hotspots as Array:
 		if typeof(raw_entry) == TYPE_DICTIONARY:
@@ -38,7 +48,11 @@ func _initialize() -> void:
 			_fail("falta el hotspot %s" % required_id)
 			return
 
-	print("PIXEL ADVENTURE SMOKE OK: ONESR=%d bytes, escena, datos y puzle base presentes" % font_bytes.size())
+	if ids.has("painting"):
+		_fail("el hotspot painting ya no debe existir en 0.5.3")
+		return
+
+	print("PIXEL ADVENTURE SMOKE OK: ONESR=%d bytes, naranjo, llave y puzle 0.5.3 presentes" % font_bytes.size())
 	quit(0)
 
 func _fail(reason: String) -> void:
