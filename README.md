@@ -2,36 +2,29 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.4.9
+## Estado actual · 0.5.0
 
 El prototipo incluye:
 
 - resolución interna **320×180** y escalado nítido;
-- **botón de pantalla completa** mediante icono en la esquina superior derecha, además de F11;
-- **cruz clásica pixel art** fija como cursor por defecto;
-- **Commodore Pixelized** para interfaz, verbos, mensajes y pantalla inicial;
-- **ONESIZE_ / Onesize normal** para los textos hablados por NPC;
-- fallback automático de fuente para **tildes, ñ y otros caracteres españoles**, evitando glifos corruptos;
-- **Windows Regular** para las respuestas del protagonista;
-- dos modos de conversación: diálogo corto sobre el escenario y conversación importante con retrato + respuestas seleccionables;
-- diálogos NPC con **relleno morado, contorno negro de 2 px, tamaño reducido y salto de línea automático**;
-- respuestas del protagonista en **verde y texto normal**, sin mayúsculas forzadas;
-- retrato transparente aprobado del **Cartógrafo** reservado para la conversación importante;
-- Cartógrafo del escenario recuperado al aspecto sencillo anterior, ahora preparado como frames PNG independientes;
-- bosque dividido en **tres PNG de parallax independientes**;
-- suelo convertido en una capa PNG independiente;
-- cofre convertido en sprites separados para cerrado, apertura y abierto;
-- interfaz inferior clásica con fondo negro, verbos verdes e inventario morado;
-- inventario, hotspots, interacción `verbo + objeto` y puzle de ejemplo;
-- exportación Web automática mediante GitHub Actions.
+- arranque en **pantalla completa** en escritorio y solicitud automática con el primer gesto en Web;
+- botón de pantalla completa mediante icono en la esquina superior derecha, además de F11;
+- hotspots sin recuadros visibles al pasar el cursor;
+- portal derecho que cierra/sale del juego usando el verbo **USAR**;
+- **Commodore Pixelized** para interfaz y **ONESIZE_** para diálogos;
+- fallback de fuente para tildes, ñ y caracteres españoles;
+- respuestas del protagonista en verde y texto normal;
+- retrato transparente del Cartógrafo en conversaciones importantes;
+- Cartógrafo del escenario con barba negra, ropa negra/gris muy oscura y frames separados de reposo/diálogo;
+- bosque y suelo separados en capas PNG de parallax;
+- cofre separado en sprites de cerrado, apertura y abierto;
+- hoja escrita independiente sobre el cofre, con prioridad de clic frente al propio cofre;
+- al usar **MIRAR** sobre la hoja se abre una pantalla de lectura con el código **14700**, usando Onesize en blanco con contorno negro y botón para volver;
+- inventario, verbos, hotspots y exportación Web automática mediante GitHub Actions.
 
-### Cambio 0.4.9 · pantalla completa y textos españoles
+### Cambio 0.5.0 · interacción y presentación
 
-Se añade un control de pantalla completa con solo icono en la esquina superior derecha. Los textos de diálogo ahora comprueban cada glifo y usan una fuente de respaldo únicamente cuando la fuente principal no contiene ese carácter, manteniendo el estilo Onesize sin romper las tildes o la `ñ`. También se normaliza la ortografía española del diálogo de la demo.
-
-### Cambio 0.4.8 · assets desacoplados
-
-La parte visual empieza a separarse de la lógica. Los fondos, el NPC del mundo y el cofre tienen una estructura de assets reemplazables sin reescribir el código. Los tamaños y convenciones están documentados en `docs/ASSET_PIPELINE.md`.
+Se mejora el Cartógrafo del mundo, se elimina el marco de depuración de los hotspots, se añade salida mediante el portal derecho y se convierte el objeto del cofre en una hoja interactiva con pantalla propia de lectura. También se configura el juego para iniciar en pantalla completa siempre que la plataforma lo permita.
 
 Demo:
 
@@ -56,10 +49,11 @@ assets/sprites/chest/
   chest_closed.png   56x32
   chest_opening.png  56x32
   chest_open.png     56x32
+  note_sheet.png     22x16
 ```
 
 El retrato de conversación sigue en `assets/characters/cartographer_portrait.png`.
 
 ## Filosofía
 
-La intención es mantener el motor **data-driven** y que el arte sea también reemplazable: habitación, capas de fondo, sprites, diálogos, inventario y puzles deben poder evolucionar sin llenar el código principal de casos específicos.
+La intención es mantener el motor **data-driven** y que el arte sea reemplazable: habitación, capas de fondo, sprites, diálogos, inventario y puzles deben poder evolucionar sin llenar el código principal de casos específicos.

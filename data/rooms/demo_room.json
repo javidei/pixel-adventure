@@ -28,15 +28,15 @@
     },
     {
       "id": "map_piece",
-      "name": "FRAGMENTO",
-      "rect": [514, 79, 18, 13],
-      "look": "UN TROZO DE MAPA CON UNA MARCA ROJA."
+      "name": "HOJA ESCRITA",
+      "rect": [512, 73, 24, 18],
+      "look": "UNA HOJA ESCRITA QUE SOBRESALE DEL COFRE."
     },
     {
       "id": "door",
-      "name": "ARCO DE PIEDRA",
+      "name": "PORTAL DE PIEDRA",
       "rect": [608, 20, 62, 92],
-      "look": "UN ARCO EN RUINAS. AL OTRO LADO CONTINUA EL SENDERO."
+      "look": "UN PORTAL EN RUINAS. AL OTRO LADO CONTINUA EL SENDERO."
     }
   ]
 }

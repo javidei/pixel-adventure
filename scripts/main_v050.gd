@@ -18,6 +18,14 @@ func _ready() -> void:
 	if not OS.has_feature("web"):
 		call_deferred("_try_enter_fullscreen")
 
+func _draw_intro() -> void:
+	draw_rect(Rect2(0, 0, VIEW_WIDTH, VIEW_HEIGHT), Color.BLACK)
+	_comm_center("BIENVENIDO A", 52, Color("918a9c"), 8)
+	_comm_center("NARANJAL DEL RIO", 82, COL_TEXT, 15)
+	if int(Time.get_ticks_msec() / 520) % 2 == 0:
+		_comm_center("PULSA PARA COMENZAR", 114, COL_GOLD, 8)
+	_comm_center("PIXEL ADVENTURE - PROTOTIPO 0.5.0", 164, Color("555564"), 6)
+
 func _process(delta: float) -> void:
 	if note_view_active:
 		queue_redraw()
@@ -61,7 +69,7 @@ func _draw() -> void:
 
 func _draw_hotspot_highlight() -> void:
 	# Mantiene el nombre del elemento bajo el cursor, pero elimina por completo
-	# el rectángulo de depuración/selección que rodeaba los hotspots.
+	# el rectángulo de selección que rodeaba los hotspots.
 	if hovered_id.is_empty() or dialogue_mode != "none":
 		return
 	var hotspot := _get_hotspot(hovered_id)

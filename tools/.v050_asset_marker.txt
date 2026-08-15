@@ -1,1 +1,0 @@
-Assets 0.5.0 preparados fuera del runtime. Este marcador puede eliminarse tras materializar los PNG.
