@@ -2,7 +2,7 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.5.2
+## Estado actual · 0.5.3
 
 El prototipo incluye:
 
@@ -17,13 +17,21 @@ El prototipo incluye:
 - diálogo corto del Cartógrafo centrado horizontalmente por encima de su cabeza, usando todo el ancho disponible;
 - sección negra de verbos desplazada hacia abajo para ganar más espacio visual para el escenario;
 - estado, verbos e inventario con Windows Regular, conservando sus colores verde, cian y morado;
+- nombre del objeto bajo el nombre de la zona, en Windows Regular y color blanco;
 - retrato transparente del Cartógrafo en conversaciones importantes;
 - Cartógrafo del escenario con cuatro sprites pixel art independientes de **32×64 px**: dos de reposo/parpadeo y dos de habla;
 - bosque y suelo separados en capas PNG de parallax;
+- sector izquierdo renovado con un **naranjo pixel art**, eliminando las columnas y el mapa torcido;
+- llave independiente en el suelo, visible desde el principio y con sprite PNG propio;
 - cofre separado en sprites de cerrado, apertura y abierto;
 - hoja escrita independiente sobre el cofre, con prioridad de clic frente al propio cofre;
 - al usar **MIRAR** sobre la hoja se abre una pantalla de lectura con el código **14700**, usando Onesize en blanco con contorno negro y botón para volver;
+- una vez recogida, la hoja puede volver a leerse desde el inventario con **MIRAR**;
 - inventario, verbos, hotspots y exportación Web automática mediante GitHub Actions.
+
+### Cambio 0.5.3 · naranjo, llave y lectura desde inventario
+
+Se elimina el mapa torcido y el bloque de columnas del sector izquierdo y se sustituyen por un naranjo pixel art. La llave pasa a estar directamente en el suelo y dispone de un sprite más definido. Los nombres de los objetos aparecen bajo el nombre de la zona en blanco y con Windows Regular. La hoja del cofre también puede volver a abrirse desde el inventario usando **MIRAR**. El diálogo del Cartógrafo deja de dar pistas sobre el mapa torcido y pasa a orientar hacia la llave junto al naranjo.
 
 ### Cambio 0.5.2 · diálogos sobre el mundo y UI inferior
 
@@ -55,6 +63,12 @@ assets/sprites/cartographer/world/
   idle_1.png         32x64
   talk_0.png         32x64
   talk_1.png         32x64
+
+assets/sprites/props/
+  orange_tree.png    64x76
+
+assets/sprites/items/
+  key_ground.png     18x10
 
 assets/sprites/chest/
   chest_closed.png   56x32

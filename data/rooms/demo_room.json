@@ -3,22 +3,16 @@
   "title": "MIRADOR DEL CARTOGRAFO",
   "hotspots": [
     {
-      "id": "painting",
-      "name": "MAPA TORCIDO",
-      "rect": [210, 28, 40, 35],
-      "look": "UN MAPA VIEJO DE NARANJAL. ESTA DEMASIADO TORCIDO PARA SER CASUALIDAD."
-    },
-    {
       "id": "key",
       "name": "LLAVE",
-      "rect": [228, 63, 11, 10],
-      "look": "UNA PEQUENA LLAVE DE COBRE ESCONDIDA TRAS EL MAPA."
+      "rect": [238, 96, 22, 15],
+      "look": "UNA LLAVE DE COBRE SOBRE EL SUELO, JUNTO AL NARANJO."
     },
     {
       "id": "npc",
       "name": "CARTOGRAFO",
       "rect": [349, 45, 32, 64],
-      "look": "UN CARTOGRAFO QUE VIGILA LAS LUCES DE NARANJAL DESDE LAS RUINAS."
+      "look": "UN CARTOGRAFO QUE VIGILA LAS LUCES DE NARANJAL DESDE EL MIRADOR."
     },
     {
       "id": "chest",
