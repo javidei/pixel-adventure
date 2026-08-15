@@ -2,7 +2,7 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.5.1
+## Estado actual · 0.5.2
 
 El prototipo incluye:
 
@@ -11,9 +11,12 @@ El prototipo incluye:
 - botón de pantalla completa mediante icono en la esquina superior derecha, además de F11;
 - hotspots sin recuadros visibles al pasar el cursor;
 - portal derecho que cierra/sale del juego usando el verbo **USAR**;
-- **Commodore Pixelized** para interfaz y **ONESIZE_** para diálogos;
+- **Commodore Pixelized** para elementos del mundo, **ONESIZE_** para diálogos y **Windows Regular** para respuestas y UI inferior;
 - fallback de fuente para tildes, ñ y caracteres españoles;
 - respuestas del protagonista en verde y texto normal;
+- diálogo corto del Cartógrafo centrado horizontalmente por encima de su cabeza, usando todo el ancho disponible;
+- sección negra de verbos desplazada hacia abajo para ganar más espacio visual para el escenario;
+- estado, verbos e inventario con Windows Regular, conservando sus colores verde, cian y morado;
 - retrato transparente del Cartógrafo en conversaciones importantes;
 - Cartógrafo del escenario con cuatro sprites pixel art independientes de **32×64 px**: dos de reposo/parpadeo y dos de habla;
 - bosque y suelo separados en capas PNG de parallax;
@@ -21,6 +24,10 @@ El prototipo incluye:
 - hoja escrita independiente sobre el cofre, con prioridad de clic frente al propio cofre;
 - al usar **MIRAR** sobre la hoja se abre una pantalla de lectura con el código **14700**, usando Onesize en blanco con contorno negro y botón para volver;
 - inventario, verbos, hotspots y exportación Web automática mediante GitHub Actions.
+
+### Cambio 0.5.2 · diálogos sobre el mundo y UI inferior
+
+El diálogo corto del Cartógrafo deja de aparecer delante del sprite: ahora se compone a todo el ancho, centrado por líneas y situado por encima de su cabeza. La franja negra inferior baja 16 px y todo su contenido pasa a usar Windows Regular, manteniendo los colores existentes para estado, verbos e inventario.
 
 ### Cambio 0.5.1 · nuevos sprites del Cartógrafo
 
