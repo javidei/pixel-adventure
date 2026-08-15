@@ -2,7 +2,7 @@
 
 Aventura gráfica point & click original en **Godot 4.7.1**, inspirada en el lenguaje visual de las aventuras de finales de los 80 y principios de los 90.
 
-## Estado actual · 0.5.0
+## Estado actual · 0.5.1
 
 El prototipo incluye:
 
@@ -15,12 +15,16 @@ El prototipo incluye:
 - fallback de fuente para tildes, ñ y caracteres españoles;
 - respuestas del protagonista en verde y texto normal;
 - retrato transparente del Cartógrafo en conversaciones importantes;
-- Cartógrafo del escenario con barba negra, ropa negra/gris muy oscura y frames separados de reposo/diálogo;
+- Cartógrafo del escenario con cuatro sprites pixel art independientes de **32×64 px**: dos de reposo/parpadeo y dos de habla;
 - bosque y suelo separados en capas PNG de parallax;
 - cofre separado en sprites de cerrado, apertura y abierto;
 - hoja escrita independiente sobre el cofre, con prioridad de clic frente al propio cofre;
 - al usar **MIRAR** sobre la hoja se abre una pantalla de lectura con el código **14700**, usando Onesize en blanco con contorno negro y botón para volver;
 - inventario, verbos, hotspots y exportación Web automática mediante GitHub Actions.
+
+### Cambio 0.5.1 · nuevos sprites del Cartógrafo
+
+Se sustituyen los cuatro sprites del Cartógrafo del escenario por los nuevos diseños pixel art aprobados. El lienzo pasa de **24×48** a **32×64 px**, manteniendo la animación existente: `idle_0`, `idle_1`, `talk_0` y `talk_1`. También se ajusta su hotspot al nuevo tamaño sin modificar el retrato grande de conversación.
 
 ### Cambio 0.5.0 · interacción y presentación
 
@@ -40,10 +44,10 @@ assets/backgrounds/demo_room/
   ground.png         680x28
 
 assets/sprites/cartographer/world/
-  idle_0.png         24x48
-  idle_1.png         24x48
-  talk_0.png         24x48
-  talk_1.png         24x48
+  idle_0.png         32x64
+  idle_1.png         32x64
+  talk_0.png         32x64
+  talk_1.png         32x64
 
 assets/sprites/chest/
   chest_closed.png   56x32
